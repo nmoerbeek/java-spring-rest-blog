@@ -18,6 +18,8 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @Size(min = 4, max = 100)
     private String title;
     @Column(length=1000000)
     @Lob
@@ -25,7 +27,8 @@ public class Post {
     @Temporal(TemporalType.DATE)
     @CreationTimestamp
     private Date date;
-
+    @Version
+    private Long version;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -36,6 +39,7 @@ public class Post {
     public void setAuthor(Author author) {
         this.author = author;
     }
+
 
 
     public Post() {
