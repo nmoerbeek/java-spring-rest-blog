@@ -1,6 +1,7 @@
 package com.pluralsight.blog.model;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -24,6 +25,18 @@ public class Post {
     @Temporal(TemporalType.DATE)
     @CreationTimestamp
     private Date date;
+
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Author author;
+    public Author getAuthor() {
+        return author;
+    }
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
 
     public Post() {
         super();

@@ -21,8 +21,21 @@ public class Author {
     private String username;
     private String password;
 
+
+
+    @OneToMany
+    private List<Post> posts;
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void addPost(Post post) {
+        posts.add(post);
+    }
+
     public Author() {
         super();
+        this.posts = new ArrayList<Post>();
     }
 
     public Author(String username, String firstname, String lastname, String password) {
@@ -84,11 +97,5 @@ public class Author {
         return true;
     }
 
-    public List<Post> getPosts() {
-        return null;
-    }
 
-    public void addPost(Post post) {
-        return;
-    }
 }
